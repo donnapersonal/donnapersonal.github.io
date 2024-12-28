@@ -20,14 +20,13 @@
   <title>script 标签 defer 与 async - Donna'Log</title>
 
   
-  <meta name="description" content="
-普通 script 标签JS 可能会修改 HTML 和 CSS，因此 JS 的下载执行过程不能和 HTML / CSS 并行
+  <meta name="description" content="普通 script 标签JS 可能会修改 HTML 和 CSS，因此 JS 的下载执行过程不能和 HTML / CSS 并行
 代码执行过程：
 
 HTML 解析过程中若碰到外联的 JS 会暂时中止 HTML 的解析流程
 然后等候脚本下载和解析完成后再继续进行之前中断掉的 HTML 解析流程
 
-...">
+因...">
   
   <meta name="keywords" content="JavaScript,前端">
 
@@ -72,7 +71,7 @@ HTML 解析过程中若碰到外联的 JS 会暂时中止 HTML 的解析流程
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-12-27T20:56:20.391Z">2024-12-27</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-12-28T03:38:36.457Z">2024-12-27</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-12-27T20:56:20.391Z">2024-12-27</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-12-28T03:45:12.875Z">2024-12-27</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -83,8 +82,7 @@ HTML 解析过程中若碰到外联的 JS 会暂时中止 HTML 的解析流程
     </div>
     
   </div>
-  </div><article class="md-text content"><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/script_defer_async" alt="JS 加载"></p>
-<h1 id="普通-script-标签"><a href="#普通-script-标签" class="headerlink" title="普通 script 标签"></a>普通 script 标签</h1><p><code>JS</code> 可能会修改 <code>HTML</code> 和 <code>CSS</code>，因此 <code>JS</code> 的下载执行过程不能和 <code>HTML / CSS</code> 并行</p>
+  </div><article class="md-text content"><h1 id="普通-script-标签"><a href="#普通-script-标签" class="headerlink" title="普通 script 标签"></a>普通 script 标签</h1><p><code>JS</code> 可能会修改 <code>HTML</code> 和 <code>CSS</code>，因此 <code>JS</code> 的下载执行过程不能和 <code>HTML / CSS</code> 并行</p>
 <p>代码执行过程：</p>
 <ul>
 <li><code>HTML</code> 解析过程中若碰到外联的 <code>JS</code> 会暂时中止 <code>HTML</code> 的解析流程</li>
@@ -128,7 +126,8 @@ HTML 解析过程中若碰到外联的 JS 会暂时中止 HTML 的解析流程
 <li><strong><code>async</code> 的 <code>JS</code> 代码不能保证是顺序执行的，而是按照 <code>race</code> 的方式哪个脚本先下载完就先解析哪个脚本</strong></li>
 </ul>
 </blockquote>
-<p>另外， <strong><code>defer</code> 和 <code>async</code> 这两个属性不能一起使用</strong>，若同时使用 <code>async</code> 和 <code>defer</code> 属性，<code>defer</code> 不起作用，浏览器行为由 <code>async</code> 属性决定</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e22634c4e40843448f67bafc980557e3~tplv-k3u1fbpfcp-watermark.JPG"></p>
+<p><strong><code>defer</code> 和 <code>async</code> 这两个属性不能一起使用</strong>，若同时使用 <code>async</code> 和 <code>defer</code> 属性，<code>defer</code> 不起作用，浏览器行为由 <code>async</code> 属性决定</p>
 <h1 id="兼容性写法"><a href="#兼容性写法" class="headerlink" title="兼容性写法"></a>兼容性写法</h1><p>暴力写法：直接写两个 <code>script</code> 标签，一个采用 <code>defer</code> 一个采用 <code>async</code>。这种方法的缺陷：</p>
 <ul>
 <li><code>IE</code> 高版本会加载两遍从而引起冲突</li>
@@ -137,13 +136,7 @@ HTML 解析过程中若碰到外联的 JS 会暂时中止 HTML 的解析流程
 <p>优化写法：<strong>通过动态添加 <code>script</code> 标签，<code>W3C</code> 的标准规定动态添加的 <code>script</code> 标签是异步的</strong></p>
 <p>这里 <code>src</code> 部分的下载是异步的，不会阻塞后面代码的执行，即可一边把 <code>script</code> 插入到 <code>DOM</code> 中一边下载资源</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要注意的是 readyState 的 if-else 一定要写在 script.src = url 和 appendChild 之前</span></span><br><span class="line"><span class="comment">// 因电脑速度可能会很快，刚走到 src = url 部分就已经加载完毕了, 此时 readyState 已变成 loaded，后面就不会触发 onreadystatechange 事件</span></span><br><span class="line"><span class="comment">// 若回调函数是写在需要加载进来的文件里的方法，需要把该方法放到匿名函数里，这样在语法解析时才不会因为函数未声明而报错，确保脚本加载完成后再执行这些方法</span></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">loadScript</span>(<span class="params">url, callback</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">    script.<span class="property">type</span> = <span class="string">&quot;text/javascript&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (script.<span class="property">readyState</span>) &#123; <span class="comment">// IE 和高版本的 chrome、firefox</span></span><br><span class="line">      script.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (script.<span class="property">readeyState</span> === <span class="string">&quot;loaded&quot;</span> || script.<span class="property">readeyState</span> === <span class="string">&quot;complete&quot;</span>) &#123;</span><br><span class="line">          script.<span class="property">onreadystatechange</span> = <span class="literal">null</span>;</span><br><span class="line">          callback &amp;&amp; <span class="title function_">callback</span>();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      script.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123; <span class="comment">// safari chrome opera firefox</span></span><br><span class="line">        callback &amp;&amp; <span class="title function_">callback</span>();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    script.<span class="property">src</span> = url;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(script);</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<div class="article-footer fs14">
-    <section id="license">
-      <div class="header"><span>许可协议</span></div>
-      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
-</div>
-    </section>
-    </div>
+
 </article>
 
 
@@ -159,7 +152,7 @@ HTML 解析过程中若碰到外联的 JS 会暂时中止 HTML 的解析流程
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%AE%E9%80%9A-script-%E6%A0%87%E7%AD%BE"><span class="toc-text">普通 script 标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#defer"><span class="toc-text">defer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#async"><span class="toc-text">async</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E5%86%99%E6%B3%95"><span class="toc-text">兼容性写法</span></a></li></ol></div><div class="widget-footer">
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%AE%E9%80%9A-script-%E6%A0%87%E7%AD%BE"><span class="toc-text">普通 script 标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#defer"><span class="toc-text">defer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#async"><span class="toc-text">async</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E5%86%99%E6%B3%95"><span class="toc-text">兼容性写法</span></a></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel blur'>
